@@ -1,0 +1,19 @@
+version: '3'
+services:
+  adonis-app:
+    build:
+      context: ./
+    ports:
+      - "3333:3333"
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: I4Digital
+      MYSQL_DATABASE: survey
+    ports:
+      - "3306:3306"
